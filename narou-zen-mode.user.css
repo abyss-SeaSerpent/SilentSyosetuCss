@@ -1,0 +1,189 @@
+/* ==UserStyle==
+@name           Narou.com ZEN MODE
+@namespace      github.com/abyss-SeaSerpent/SilentNarouCss
+@version        1.0.0
+@description    Focus on your story on syosetu.com. Hides all numbers, comments, and distractions.
+@author         SeaSerpent
+@category       site-customization
+@license        MIT
+==/UserStyle== */
+
+@-moz-document url-prefix("https://syosetu.com/"), url-prefix("https://ncode.syosetu.com/") {
+    .p-header__description-data{
+        display: none !important;
+    }
+
+    .p-bookmark-bar__left {
+        display: none !important;
+    }
+
+    .p-recommend__info-item--bookmarked{
+        display: none !important;
+    }
+
+    /*感想非表示*/
+    .p-new-impression__box,
+    .p-new-impression,
+    .c-novel-feedback-form--active,
+    .p-reaction__jumpnav,
+    .p-novelpoint-form__body,
+    .p-novelpoint-form__body--accept,
+    .js-input_point,
+    .p-reaction{
+        display: none !important;
+    }
+
+    /* ナビゲーションメニュー内の「感想」リンクを非表示 */
+    .c-menu__body a[href*="/impression/list/"] {
+        display: none !important;
+    }
+
+    /* ナビゲーションメニュー内の「レビュー」リンクを非表示 */
+    .c-menu__body a[href*="/novelreview/list/"] {
+        display: none !important;
+    }
+
+
+    /* 1. まず「コメントと反応」のリスト項目をすべて非表示にする */
+    .c-up-aside__nav-list .c-up-aside__nav-item {
+        display: none !important;
+    }
+
+    /* 2. 「ランクイン履歴」のリンクを含んでいる項目だけを、強制的に再表示させる */
+    .c-up-aside__nav-list .c-up-aside__nav-item:has(a[href*="ranknovellog"]) {
+        display: list-item !important;
+    }
+
+    /* 3. ついでに「コメントと反応」という見出しが嘘になる（1つしかないので）なら、
+    見出し自体も消してスッキリさせる（お好みで） */
+    .p-up-home-nav__reaction {
+        display: none !important;
+    }
+
+    /* ヘッダーナビゲーション内の「メッセージ」リンクを非表示 */
+    .p-up-header-pc__nav-item:has(a[href*="/messagebox/top/"]) {
+        display: none !important;
+    }
+
+
+    /* グローバルメニュー非表示 */
+
+    /* 1. 「コメントと反応」の見出しを消す */
+    .p-up-header-pc__gmenu-headline:has(.p-icon--comment-dots-line) {
+        display: none !important;
+    }
+
+    /* 2. メニュー項目を一旦すべて非表示にする */
+    .p-up-header-pc__gmenu-item {
+        display: none !important;
+    }
+
+    /* 3. 「残したい項目」だけをホワイトリストで復活させる */
+    .p-up-header-pc__gmenu-item:has(a[href*="ranknovellog"]),      /* ランクイン履歴 */
+    .p-up-header-pc__gmenu-item:has(a[href*="cheers"]),            /* チアーズ関連 */
+    .p-up-header-pc__gmenu-item:has(a[href*="userblock"]),         /* ブロック */
+    .p-up-header-pc__gmenu-item:has(a[href*="mute"]) {             /* ミュート */
+        display: block !important;
+    }
+}
+
+@-moz-document url-prefix("https://ncode.syosetu.com/novelview/infotop/ncode/") {
+    .p-bookmark-bar__body {
+        display: none !important;
+    }
+}
+
+@-moz-document url-prefix("https://ncode.syosetu.com/novelview/infotop/ncode/") {
+    /*ブックマーク非表示*/
+    .p-infotop-type__right{
+        display: none !important;
+    }
+
+    /* 作品情報ページの特定の項目（感想〜誤字報告）を非表示にする */
+
+    /* 感想：9番目 */
+    /* レビュー：10番目 */
+    /* ブックマーク：11番目 */
+    .p-infotop-data dt:nth-of-type(9), 
+    .p-infotop-data dd:nth-of-type(9),
+    .p-infotop-data dt:nth-of-type(10), 
+    .p-infotop-data dd:nth-of-type(10),
+    .p-infotop-data dt:nth-of-type(11), 
+    .p-infotop-data dd:nth-of-type(11){
+        display: none !important;
+    }
+
+    /* 総合評価：12番目 */
+    /* 評価ポイント：13番目 */
+    .p-infotop-data dt:nth-of-type(12), 
+    .p-infotop-data dd:nth-of-type(12),
+    .p-infotop-data dt:nth-of-type(13), 
+    .p-infotop-data dd:nth-of-type(13){
+        display: none !important;
+    }
+
+    /* 感想受付：14番目 */
+    /* レビュー受付：15番目 */
+    /* 誤字報告受付：16番目 */
+    .p-infotop-data dt:nth-of-type(14), 
+    .p-infotop-data dd:nth-of-type(14),
+    .p-infotop-data dt:nth-of-type(15), 
+    .p-infotop-data dd:nth-of-type(15),
+    .p-infotop-data dt:nth-of-type(16), 
+    .p-infotop-data dd:nth-of-type(16){
+        display: none !important;
+    }
+
+}
+
+@-moz-document url-prefix("https://novelcom.syosetu.com/impression/list/ncode/") {
+    /*感想非表示*/
+    main{
+        display: none !important;
+    }
+
+
+    .l-container::after{
+        content: "執筆に集中しましょう。";
+        display: block;
+        text-align: center;
+        margin: 20% 0 30%;
+        font-size: 2rem;
+        color: gray;
+    }
+
+
+}
+
+@-moz-document url-prefix("https://novelcom.syosetu.com/novelreview/list/ncode/") {
+    /*レビュー非表示*/
+    main{
+        display: none !important;
+    }
+
+
+    .l-container::after{
+        content: "執筆に集中しましょう。";
+        display: block;
+        text-align: center;
+        margin: 20% 0 30%;
+        font-size: 2rem;
+        color: gray;
+    }
+}
+
+@-moz-document url-prefix("https://syosetu.com/usernovelimpression/passivelist/"), url-prefix("https://syosetu.com/usernovelreview/passivelist/"), url-prefix("https://syosetu.com/usernovelreport/passivelist/"), url-prefix("https://syosetu.com/messagebox/top/") {
+    .c-up-page-title__text,
+    .l-container{
+        display: none !important;
+    }
+
+    .c-up-page-title::after{
+        content: "執筆に集中しましょう。";
+        display: block;
+        text-align: center;
+        margin: 20% 0 30%;
+        font-size: 2rem;
+        color: gray;
+    }
+}
